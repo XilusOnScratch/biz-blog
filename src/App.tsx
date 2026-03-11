@@ -23,6 +23,20 @@ const styles = `
     font-weight: 300;
     line-height: 1.75;
     min-height: 100vh;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 1000;
   }
 
   /* ── NAV ── */
@@ -30,13 +44,33 @@ const styles = `
     position: sticky;
     top: 0;
     z-index: 100;
-    background: var(--ink);
+    background: rgba(26, 22, 18, 0.85); /* Semi-transparent ink */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 2.5rem;
     height: 60px;
     border-bottom: 2px solid var(--warm);
+    overflow: hidden;
+  }
+
+  /* Abstract accent in nav */
+  nav::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 200%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--warm), var(--rust), var(--warm), transparent);
+    animation: flowLine 8s linear infinite;
+  }
+
+  @keyframes flowLine {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
   }
 
   nav .logo {
@@ -74,20 +108,100 @@ const styles = `
 
   /* ── HERO ── */
   .hero {
-    background: var(--ink);
+    background: var(--ink) url('./assets/hero-bg.png') no-repeat center center;
+    background-size: cover;
     color: var(--cream);
-    padding: 6rem 2.5rem 5rem;
+    padding: 10rem 2.5rem 8rem; /* Increased padding */
     text-align: center;
     position: relative;
     overflow: hidden;
+    min-height: 50vh; /* Ensure more of the image is visible */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 60% 40%, rgba(200,169,110,0.12) 0%, transparent 70%);
-    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(26, 22, 18, 0.4), rgba(26, 22, 18, 0.8)); /* Lightened overlay */
+    z-index: 1;
+  }
+
+  /* ... rest of hero styles ... */
+
+  .post-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+
+  .video-link {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 1.5rem;
+    background: var(--ink);
+    color: var(--warm);
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    transition: all 0.2s;
+    border: 1px solid var(--warm);
+  }
+
+  .video-link:hover {
+    background: var(--warm);
+    color: var(--ink);
+  }
+
+  /* Abstract floating blobs */
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle, var(--warm) 0%, transparent 70%);
+    opacity: 0.15;
+    filter: blur(60px);
+    top: -10%;
+    right: -10%;
+    border-radius: 50%;
+    animation: floatBlob 20s infinite alternate ease-in-out;
+    z-index: 0;
+  }
+
+  .hero-blob-2 {
+    content: '';
+    position: absolute;
+    width: 30vw;
+    height: 30vw;
+    background: radial-gradient(circle, var(--rust) 0%, transparent 70%);
+    opacity: 0.1;
+    filter: blur(50px);
+    bottom: -5%;
+    left: -5%;
+    border-radius: 50%;
+    animation: floatBlob 15s infinite alternate-reverse ease-in-out;
+    z-index: 0;
+  }
+
+  @keyframes floatBlob {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-50px, 30px) scale(1.1); }
+  }
+
+  .hero > * {
+    position: relative;
+    z-index: 2;
   }
 
   .hero .eyebrow {
@@ -493,6 +607,7 @@ const posts = [
           his work and catch up. Over time he improved and became a strong contributor to the
           group, and we eventually became good friends.
         </p>
+        <img src="/class.png" alt="Classroom setting" className="post-image" />
         <div className="pull-quote">
           "Empathy is a crucial element in modern workplace settings, as it contributes to building
           a trusting work environment and supporting employee mental health." — Harvard Business
@@ -546,12 +661,14 @@ const posts = [
           What I am taking away from this is simple. Stop being afraid of failure. Be afraid of
           not trying. Because failure is just feedback, and feedback is how we grow.
         </p>
-        <p>
-          <em>
-            📎 Video reflection attached below:
-          </em>
-        </p>
-        <div className="placeholder-link">▶ [INSERT FAILURE VIDEO RECORDING HERE]</div>
+        <a
+          href="https://drive.google.com/file/d/1pAYfJ0pYYYw2u-nOTjfXNcaZ8W16QYIY/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="video-link"
+        >
+          <span>▶</span> Watch Video Reflection
+        </a>
       </>
     ),
   },
@@ -575,10 +692,12 @@ const posts = [
         <p>
           Another thing that stood out was the idea that most people underestimate themselves not
           because they lack ability but because they have convinced themselves of their own
-          limitations. Schwartz calls this "excusitis," which is basically the habit of leaning on
-          excuses like not being smart enough, not having enough experience, or being too young or
-          too old. These excuses feel real but they are mostly mental blocks we build for ourselves.
+          limitations. Schwartz calls this "excusitis," which is
+          basically the habit of leaning on excuses like not being smart enough, not having enough
+          experience, or being too young or too old. These excuses feel real but they are mostly
+          mental blocks we build for ourselves.
         </p>
+        <img src="/plant.png" alt="Growth and potential" className="post-image" />
         <h3>What Gets in the Way of Positive Thinking?</h3>
         <p>
           Honestly, I think the biggest obstacle to positive thinking is comparison. The second
@@ -654,6 +773,7 @@ const posts = [
           experience that. So while I see women only spaces as a practical response to a real
           problem, the deeper work is about changing workplace culture from the inside.
         </p>
+        <img src="/workplace.jpeg" alt="Modern Workplace" className="post-image" />
         <p>
           The Pixar Spark Short connects to this really well. The short films from Pixar often
           center characters who are underestimated or who feel like they do not belong in the
@@ -841,6 +961,7 @@ export default function App() {
 
       {/* HERO */}
       <div className="hero">
+        <div className="hero-blob-2"></div>
         <p className="eyebrow">BOH4MO-05 · Course Blog</p>
         <h1>
           Luminary
