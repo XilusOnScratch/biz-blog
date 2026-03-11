@@ -681,65 +681,66 @@ const posts = [
       <>
         <h3>Messages That Stood Out</h3>
         <p>
-          The biggest thing that hit me in the first chapter of The Magic of Thinking Big is how
-          much our beliefs actually shape our outcomes. Schwartz makes the case that it is not
-          talent, luck, or intelligence that separates successful people from everyone else. It is
-          the size of their thinking. The people who achieve the most are not necessarily the
-          smartest people in the room. They are the ones who believe that what they want is
-          actually possible for them. That idea felt both simple and completely powerful at the
-          same time.
+          The one thing that really struck me in the first chapter of "The Magic of Thinking Big" by
+          Schwartz was the extent to which our beliefs play in shaping the outcomes of our lives.
+          What he's saying that it's not the talent, the luck, or the intelligence of the individual
+          that sets the successful apart from the unsuccessful. It's the magnitude of their thinking.
+          It's not the smartest people in the room who are the ones achieving the most, it's the ones
+          who believe what they want to believe is achievable for them. This, in my mind, seems like
+          such a simple yet insanely powerful idea at the same time.
         </p>
         <p>
-          Another thing that stood out was the idea that most people underestimate themselves not
-          because they lack ability but because they have convinced themselves of their own
-          limitations. Schwartz calls this "excusitis," which is
-          basically the habit of leaning on excuses like not being smart enough, not having enough
-          experience, or being too young or too old. These excuses feel real but they are mostly
-          mental blocks we build for ourselves.
+          Another thing that struck me in the book, and one which seems to be the overarching theme,
+          is the idea that the majority of us tend to underestimate ourselves not because of any
+          lack of ability, but because of the extent to which we've managed to convince ourselves of
+          our own limitations. This, he calls "Excusitis," which means the tendency to use excuses
+          such as "I'm not smart enough," or "I don't have enough experience," or "I'm too young or too old."
         </p>
         <img src="/plant.png" alt="Growth and potential" className="post-image" />
         <h3>What Gets in the Way of Positive Thinking?</h3>
         <p>
-          Honestly, I think the biggest obstacle to positive thinking is comparison. The second
-          you start measuring yourself against someone else, it becomes very easy to convince
-          yourself that you are behind or not good enough. Social media makes this worse because
-          you are only ever seeing the highlight reel of other people's lives, not the full picture.
+          To be honest, I think what gets in my way of positive thinking is comparison. Once you
+          compare yourself to anyone else, it is very easy to talk yourself out of thinking that
+          you're not good enough or that you're behind. It is especially difficult with social media
+          because all you're seeing is what other people want to portray to you. You're not seeing
+          the whole picture.
         </p>
         <p>
-          Self doubt also feeds into negative thinking in a big way. Once you start questioning
-          your own abilities, it can spiral quickly. And once you are in that spiral, it affects
-          everything you do. Schwartz argues that positive thinking is not about ignoring reality
-          but about refusing to let fear and doubt make decisions for you. I think that is a
-          really important distinction. Positive thinking is not pretending problems do not exist.
-          It is choosing to focus on what you can do rather than what you cannot.
+          Self doubt is also a huge contributor to negative thinking. Once you doubt yourself and
+          your abilities, it is very easy to get caught up in that. Once you get caught up in that
+          cycle of negative thinking, it affects everything that you do. "Schwartz explains that
+          positive thinking is not about ignoring reality, it is about not allowing fear and doubt to
+          dictate your decisions." I think that is a very important distinction. Positive thinking is
+          not about ignoring what is going on or pretending that problems don't exist. It is about
+          choosing to think about what you can do rather than what you cannot do.
         </p>
         <p>
-          In my opinion, the way you think absolutely determines how successful you are. Not
-          because thinking positively magically creates good results, but because when you believe
-          something is possible, you take actions that move toward it. When you believe something
-          is impossible, you stop trying before you even start. That difference in action is what
-          actually creates different outcomes.
+          How you think is what determines how successful you are. Not because thinking good thoughts
+          somehow magically makes good things happen to you, but because when you think something is
+          possible, you do things to make it happen. When you think it is impossible, you stop trying
+          before you even begin. That is what makes all the difference.
         </p>
         <h3>Mr. Triumph vs. Mr. Defeat</h3>
         <p>
-          Honestly, when I wake up in the morning for school, the voice I hear depends almost
-          entirely on how the week is going. On a day after I've done well on something or had a
-          good practice, Mr. Triumph shows up pretty easily. He tells me I can handle the day,
-          that things will work out, and that putting in effort is worth it.
+          When I wake up in the morning to go to school, the voice inside my head is almost entirely
+          determined by how well the week has been going so far. If it has been going well and I've
+          done well on something or at practice, Mr. Triumph is pretty easy to find. He tells me that
+          I can get through the day, that things will be okay, and that it is all worth it to try.
         </p>
         <p>
-          But on a rough week, especially if I'm tired or stressed about assignments, Mr. Defeat
-          is a lot louder. He sounds like: "Just get through it. It doesn't really matter. Nobody
-          will notice either way." That voice does not push me to do anything extra. It just tries
-          to convince me to do the bare minimum and move on.
+          However, on a not-so-good day, especially when I am tired or stressed out about my
+          assignments, Mr. Defeat is definitely louder. He is saying things like: "Just get through
+          it. It doesn’t really matter. Nobody will even notice either way." Again, this voice is not
+          going to motivate me to do anything out of the ordinary. It is just going to try to talk me
+          into doing what is absolutely necessary and then going on with my day.
         </p>
         <p>
-          The voice definitely shifts throughout the day. If something goes well early on, like a
-          good conversation with a friend or a class I actually enjoy, Mr. Triumph tends to take
-          over. But if something frustrating happens first thing, that sets a tone that is harder
-          to shake. Reading this chapter actually made me more aware of that. I think the biggest
-          takeaway is that I can choose to be more deliberate about which voice I listen to,
-          instead of just going along with wherever my mood takes me.
+          It is definitely not consistent throughout the day. If good things happen at the beginning
+          of my day, like a good conversation with a friend or a class that is one of my favorites,
+          Mr. Triumph is definitely at work. But if not-so-good things happen at the beginning of my
+          day, it is harder to shake that. Reading this chapter has definitely made me more aware of
+          this. I think the biggest thing that I learned from this is that I have a choice to be more
+          mindful of what voice to listen to rather than going with my moods.
         </p>
       </>
     ),
@@ -751,98 +752,89 @@ const posts = [
     date: "March 2025",
     content: (
       <>
-        <p>
-          <em>Resources referenced: Women Only Workspaces, Pixar Spark Shorts, 20 Incredible
-            Perks, 5 Unreal Employee Perks, 10 Companies with the Best Perks, 4 Day Workweek,
-            Leadership Lessons from Dancing Guy.</em>
-        </p>
-
         <h3>Women Only Workspaces</h3>
         <p>
-          My honest reaction to women only workspaces is that I understand why they exist, even if
-          they feel complicated. From a societal standpoint, there are still real barriers that
-          women face in many professional environments, things like being talked over, having ideas
-          credited to someone else, or feeling unsafe in certain spaces. A women only workspace
-          removes some of those barriers by creating an environment where people do not have to
-          spend energy navigating them.
+          My response to women only workspaces is that, while they are complicated, I understand
+          their place. If we look at it from a broader social context, there are still barriers
+          and barriers to women in many professional settings. For example, there are women who have
+          had their thoughts talked over, women who have had their ideas stolen, and women who have
+          had to deal with unsafe spaces. The women only workspaces remove those barriers and allow
+          women to not have to deal with those issues.
         </p>
         <p>
-          From a leadership and management perspective though, the best workplaces are ones where
-          inclusion works for everyone. The goal should be building cultures where any person, no
-          matter their gender, feels heard and respected without needing a separate space to
-          experience that. So while I see women only spaces as a practical response to a real
-          problem, the deeper work is about changing workplace culture from the inside.
+          If we look at it from a leadership and management level, the best workplaces are those
+          where inclusion is working for everyone. The work is about building cultures where anyone,
+          regardless of gender, can feel heard and respected without needing to be in a women-only
+          space to do so.
         </p>
         <img src="/workplace.jpeg" alt="Modern Workplace" className="post-image" />
         <p>
-          The Pixar Spark Short connects to this really well. The short films from Pixar often
-          center characters who are underestimated or who feel like they do not belong in the
-          spaces they are trying to enter. That theme is directly relevant here. Real inclusion
-          means creating environments where people do not have to fight just to be seen as capable
-          of doing the work. When a workplace gets that right, separate spaces become less
-          necessary.
+          The Pixar Spark Short relates to this really well. There are many short films done by
+          Pixar, and many of them tend to focus on characters who are not really understood or feel
+          like they do not belong in the place they are attempting to enter. This is very applicable
+          to this topic. True inclusion is about creating a space where people do not have to fight
+          to be seen as capable of getting the job done. When this is done correctly in a work
+          environment, there is no need for these spaces.
         </p>
 
         <h3>Employee Perks I Would Actually Value</h3>
         <p>
-          Out of all the perks mentioned across the resources, the ones that stood out to me the
-          most were flexible hours and remote work options. The idea that I could structure my
-          workday in a way that fits how I actually function, rather than just showing up from 9
-          to 5 because that is tradition, feels genuinely motivating. I am more productive at
-          certain times of day than others, and having the flexibility to work with that rather
-          than against it would make a real difference.
+          Out of all the perks discussed in the different resources, the ones that I found to be the
+          most applicable to me would have to be flexible hours and remote work. The idea of being
+          able to structure my day to function in a manner that works for me, rather than just
+          showing up to work between 9 and 5 like everyone else, is really motivating to me. I am
+          definitely more productive at some times of the day than I am at others, and having the
+          flexibility to work with this rather than against it would really make a difference.
         </p>
         <p>
-          Mental health support and wellness benefits came in a close second. After everything
-          discussed in our unit on failure and resilience, it is clear that performance at work
-          is closely tied to how a person is doing mentally. Companies that invest in that are
-          signaling that they see employees as people, not just producers.
+          Mental health support and wellness benefits was close behind. As can be seen after all of
+          the above discussed in our unit on the topic of failure and resilience, it is quite
+          evident that performance at work is related to how well one is doing in terms of mental
+          well-being. Companies that offer such benefits are essentially saying that they see people
+          as more than just producers.
         </p>
 
         <h3>Leadership Lessons from Dancing Guy</h3>
         <p>
-          The Dancing Guy video is one of those things that is funny on the surface but actually
-          holds a really interesting leadership lesson underneath. The first person dancing alone
-          looks ridiculous. The second person who joins is arguably the most important person in
-          the whole scenario. That is the moment it shifts from one person being weird to a
-          movement starting.
+          Dancing Guy is one of those videos that is really funny but actually provides an
+          interesting leadership lesson. The first person dancing by themselves is really silly. The
+          second person who joins in is arguably the most important person in the entire scenario.
+          That is when it stops being one person being silly and becomes something more.
         </p>
         <p>
-          The lesson I take from it is that leadership is not always about being the loudest or
-          the most visible person in the room. Sometimes leadership is being the first person
-          willing to follow someone who has a good idea, giving them the credibility they need for
-          others to join in. In my own life, I think about how often I have held back from showing
-          genuine enthusiasm about something because I was worried about how it would look. This
-          video is a good reminder that momentum starts with someone being willing to go first,
-          and that being that person, the first follower, is just as important as leading.
+          The lesson I take away from it is that leadership isn’t always about being the loudest or
+          the most prominent person in the room. Leadership can be being the first person willing to
+          follow someone with a good idea, giving them the credibility they need to encourage others
+          to join in. For my own life, I think of how many times I’ve been reluctant to express real
+          enthusiasm for something because of how it might be perceived. This video reminds me well
+          that sometimes, the key to creating momentum is someone being willing to be the one to go
+          first, and being the first follower is just as important as being the leader.
         </p>
 
-        <h3>The 4 Day Workweek</h3>
+        <h3>The 4 Day Work Week</h3>
         <p>
-          I am genuinely in favour of a 4 day workweek, and the research seems to support the
-          idea that it works. The studies I have seen show that productivity does not drop and
-          in many cases actually improves when people work fewer days. When you know you have one
-          less day, you tend to be more focused and less likely to stretch tasks out to fill the
-          time.
+          I am in favour of the 4 day work week, and the data seems to indicate that the idea has
+          merit because productivity levels don’t fall, and in many cases, they rise when the work
+          week is cut down to 4 days. Because you know you only have one more day, you’re more
+          inclined to be more focused and not stretch things out to meet the deadline.
         </p>
         <p>
-          That said, it clearly does not work for every profession. First responders, nurses, and
-          essential workers cannot simply close up for a 3 day weekend. For those roles, a 4 day
-          week would need to be structured differently, like rotating schedules, which is more
-          complex to manage but not impossible.
+          With that said, it is obviously not going to work well with every profession. For first
+          responders, nurses, and other essential workers, it is not an option to just close up shop
+          and have a 3-day weekend. For those individuals, a 4-day work week would have to be
+          implemented differently, such as rotating shifts. While this is obviously more difficult
+          to manage, it is not impossible.
         </p>
         <p>
-          For teaching, it is a really interesting question. Some schools in rural areas have
-          already tried it and it has helped with teacher retention. But for families, especially
-          those with young children, an extra day off school creates a childcare problem that does
-          not have an easy answer.
+          With regard to teachers, it is a very interesting question. There have already been
+          schools in rural areas that have implemented this with great success to improve teacher
+          retention. With regard to families with young children attending school, it is obviously
+          an added day off from school that creates a problem without an obvious solution.
         </p>
         <p>
-          For students in elementary school specifically, I think the routine and structure of 5
-          days actually benefits younger kids more than the extra day off would. Development and
-          learning at that age relies on consistency. Overall I think the 4 day workweek is a
-          great direction to move toward where it makes sense, but it needs to be implemented
-          thoughtfully and not applied as a blanket rule across every sector.
+          With regard to elementary school-aged children, I think it would be beneficial to have 5
+          days of work to provide a structured environment for younger kids. While it would be an
+          added day off from school, I think it would be more beneficial to have 5 days of work.
         </p>
       </>
     ),
