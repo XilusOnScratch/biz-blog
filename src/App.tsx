@@ -2,28 +2,30 @@ import { useState } from "react";
 
 // ── Google Fonts loaded via @import in the style block below ──
 const styles = `
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --cream:   #f5f0e8;
+    --cream:   #f7f3ed;
     --ink:     #1a1612;
     --warm:    #c8a96e;
     --rust:    #b85c38;
-    --muted:   #7a7068;
-    --card:    #fdfaf4;
-    --border:  #e2d9c8;
+    --muted:   #8a827a;
+    --card:    #ffffff;
+    --border:  #eadeca;
+    --accent:  #d4b17a;
   }
 
   body {
     background: var(--cream);
     color: var(--ink);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    line-height: 1.75;
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
     min-height: 100vh;
     position: relative;
+    overflow-x: hidden;
   }
 
   body::before {
@@ -33,10 +35,26 @@ const styles = `
     left: 0;
     width: 100%;
     height: 100%;
-    background: url("https://www.transparenttextures.com/patterns/natural-paper.png");
-    opacity: 0.4;
+    background: url("https://www.transparenttextures.com/patterns/natural-paper.png"),
+                radial-gradient(circle at 20% 30%, rgba(200, 169, 110, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(184, 92, 56, 0.05) 0%, transparent 50%);
+    opacity: 0.6;
     pointer-events: none;
     z-index: 1000;
+  }
+
+  /* Grain overlay */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity: 0.07;
+    pointer-events: none;
+    z-index: 1001;
+    filter: contrast(150%) brightness(100%);
   }
 
   /* ── NAV ── */
@@ -90,14 +108,15 @@ const styles = `
     background: none;
     border: none;
     color: #ccc;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Instrument Sans', sans-serif;
     font-size: 0.85rem;
-    letter-spacing: 0.08em;
+    font-weight: 500;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     cursor: pointer;
     padding: 4px 0;
-    border-bottom: 1px solid transparent;
-    transition: color 0.2s, border-color 0.2s;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   nav ul li button:hover,
@@ -237,6 +256,79 @@ const styles = `
     to   { opacity: 1; transform: translateY(0); }
   }
 
+  /* ── DECORATIVE BOBBING VISUALS ── */
+  .post-card-wrapper {
+    position: relative;
+    margin-bottom: 8rem;
+  }
+
+  .bob-visual {
+    position: absolute;
+    z-index: -1;
+    pointer-events: auto;
+    opacity: 0.2;
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .bob-visual:hover {
+    opacity: 0.9;
+    transform: scale(1.5) !important;
+    filter: drop-shadow(0 0 15px rgba(200, 169, 110, 0.3));
+    z-index: 10;
+  }
+
+  .bob-visual svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: var(--warm);
+    stroke-width: 1.2;
+    stroke-linecap: round;
+    transition: fill 0.3s;
+  }
+
+  .bob-visual.filled svg {
+    fill: rgba(200, 169, 110, 0.25); /* More solid warm tint */
+  }
+
+  .bob-visual.filled.rust svg {
+    fill: rgba(184, 92, 56, 0.25); /* More solid rust tint */
+    stroke: var(--rust);
+  }
+
+  /* Push to screen edges and move MORE */
+  .bob-visual-1 { 
+    top: -60px; 
+    left: min(-150px, calc(-50vw + 300px)); 
+    animation: spin-bob-1 15s linear infinite; 
+  }
+  
+  .bob-visual-2 { 
+    bottom: -60px; 
+    right: min(-150px, calc(-50vw + 300px)); 
+    animation: spin-bob-2 18s linear infinite reverse; 
+  }
+
+  @keyframes spin-bob-1 {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-40px, -60px) rotate(90deg); }
+    50% { transform: translate(20px, -110px) rotate(180deg); }
+    75% { transform: translate(50px, -50px) rotate(270deg); }
+    100% { transform: translate(0, 0) rotate(360deg); }
+  }
+
+  @keyframes spin-bob-2 {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(50px, 80px) rotate(-90deg); }
+    50% { transform: translate(-30px, 140px) rotate(-180deg); }
+    75% { transform: translate(-60px, 70px) rotate(-270deg); }
+    100% { transform: translate(0, 0) rotate(-360deg); }
+  }
+
+  @media (max-width: 950px) {
+    .bob-visual { display: none; }
+  }
+
   /* ── PAGE TRANSITION ── */
   .page {
     max-width: 820px;
@@ -248,14 +340,41 @@ const styles = `
   @keyframes pageEnter {
     from {
       opacity: 0;
-      transform: translateY(30px) scale(0.98);
-      filter: blur(4px);
+      transform: translateY(20px);
+      filter: blur(10px);
     }
     to {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translateY(0);
       filter: blur(0);
     }
+  }
+
+  /* ── PERSONAL TOUCHES ── */
+  .handwritten {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--accent);
+    position: relative;
+    display: inline-block;
+  }
+  
+  .handwritten::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .handwritten:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
   }
 
   /* ── SECTION TITLE ── */
@@ -282,13 +401,34 @@ const styles = `
   .post-card {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 2px;
-    margin-bottom: 2.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
     overflow: hidden;
-    transition: box-shadow 0.25s;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    position: relative;
   }
 
-  .post-card:hover { box-shadow: 0 6px 28px rgba(26,22,18,0.08); }
+  .post-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--warm);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .post-card:hover { 
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(26,22,18,0.08); 
+  }
+
+  .post-card:hover::before {
+    opacity: 1;
+  }
 
   .post-header {
     padding: 2rem 2.2rem 1.4rem;
@@ -397,10 +537,11 @@ const styles = `
   }
 
   .about-card .tagline {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: var(--muted);
-    margin-bottom: 1.6rem;
-    letter-spacing: 0.04em;
+    margin-bottom: 2rem;
+    letter-spacing: 0.02em;
+    font-style: italic;
   }
 
   .about-card p { margin-bottom: 1rem; color: #3a3530; }
@@ -537,12 +678,12 @@ const styles = `
     background: var(--cream);
     border: 1px solid var(--border);
     padding: 1rem;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Instrument Sans', sans-serif;
     font-size: 1.2rem;
     text-align: center;
     letter-spacing: 0.5em;
     color: var(--ink);
-    border-radius: 2px;
+    border-radius: 6px;
   }
 
   .passcode-input:focus {
@@ -555,13 +696,13 @@ const styles = `
     color: white;
     border: none;
     padding: 1rem;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     cursor: pointer;
-    transition: background 0.2s;
-    border-radius: 2px;
+    transition: all 0.3s;
+    border-radius: 6px;
   }
 
   .passcode-btn:hover {
@@ -839,6 +980,63 @@ const posts = [
       </>
     ),
   },
+  {
+    id: 5,
+    num: "Entry 05",
+    title: "Excusitis",
+    date: "April 2025",
+    content: (
+      <>
+        <p>
+          The recent reading on Excusitis made me realize how commonly people make excuses without
+          knowing it. However, the idea that is the most impressive for me is the one concerning the
+          development of such habits as a subconscious process. For instance, during a class
+          presentation, one of my group members had to make a slideshow, but they constantly kept
+          complaining that they were busy because of sports practice, sometimes had guests coming
+          over, and other times they were out. Every single time it was a new excuse, and it occurred
+          to me that they were simply making up reasons not to work on a collaborative assignment.
+          After I started on the assignment and started making progress, they also started helping me
+          alongside. It made me realize that sometimes we have to be the one to take action first as
+          a leader, and then others will stop giving unfair excuses.
+        </p>
+        <p>
+          As a habit, there is one that I made up and used quite frequently in the past. Namely,
+          whenever I was asked if I wanted to hang out with friends or even help my family with
+          their home tasks, I always claimed that I was too busy with work and school. However,
+          after a while, I started analyzing why I said that I had no time to do something. The
+          main reason behind this was simply that I didn’t want to do it. This was very detrimental
+          to my personal relationships, as I was spending less time than I should on making stronger
+          connections with my close ones. As a consequence, I started making different plans,
+          rearranged my schedules, and managed my time more effectively, and therefore I changed my
+          mindset completely.
+        </p>
+        <p>
+          Additionally, I suffered from intelligence excusitis. On one of my French unit tests back
+          in Grade 9, I kept on convincing myself that I was not good at remembering things and did
+          not have adequate intelligence to perform well. As a result, I ended up studying without
+          proper confidence and performing poorly initially. I believe that I’ve gotten
+          significantly better on self-consciousness throughout the past years, and learnt to analyze
+          my past behavior. Eventually, I realized my poor performance might be due to my lack of
+          confidence. With time, practice, and more repetitions, I managed to understand the concepts
+          and scored well on the next tests. In essence, believing that I was not smart enough became
+          an impediment to success more than the course itself.
+        </p>
+        <p>
+          According to the readings, success or failure in anything does not rely on luck. Usually,
+          people tend to compare themselves with other individuals and conclude that they are simply
+          lucky. However, this line of thinking makes us give up easily. By assuming that luck is
+          what defines success, we take the blame off ourselves hence becoming lazy and avoiding
+          improvement. We tend to limit our potential since we consider luck a factor that cannot be
+          controlled by us.
+        </p>
+        <img 
+          src="https://substackcdn.com/image/fetch/$s_!j7xv!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F83ad3335-983c-4d44-82b8-d31d0704ee73_4320x3200.png" 
+          alt="Excusitis Mindset Illustration" 
+          className="post-image" 
+        />
+      </>
+    ),
+  },
 ];
 
 // ── COMPONENT ─────────────────────────────────────────────────────────────────
@@ -930,7 +1128,7 @@ export default function App() {
 
       {/* NAV */}
       <nav>
-        <div className="logo">Luminary</div>
+        <div className="logo handwritten">Luminary</div>
         <ul>
           <li>
             <button
@@ -969,50 +1167,89 @@ export default function App() {
         {view === "blog" && (
           <>
             <div className="section-title">Blog Entries</div>
-            {posts.map((post) => (
-              <div className="post-card" key={post.id}>
-                <div className="post-header" onClick={() => toggle(post.id)}>
-                  <div className="post-meta">
-                    <div className="post-num">{post.num}</div>
-                    <div className="post-title">{post.title}</div>
-                    <div className="post-date">{post.date}</div>
+            {posts.map((post, idx) => {
+              // Even wider variety of sizes and shapes
+              const sizes = ["140px", "280px", "90px", "320px", "110px", "240px"];
+              const sizeL = sizes[idx % sizes.length];
+              const sizeR = sizes[(idx + 3) % sizes.length];
+
+              // Determine if it should be filled based on index
+              const isFilledL = idx % 2 === 0;
+              const isFilledR = idx % 2 !== 0;
+
+              const ShapeLeft = idx % 3 === 0 ? (
+                <svg viewBox="0 0 100 100"><path d="M20,50 Q20,20 50,20 T80,50 50,80 T20,50" /></svg>
+              ) : idx % 3 === 1 ? (
+                <svg viewBox="0 0 100 100"><rect x="20" y="20" width="60" height="60" rx="15" transform="rotate(15, 50, 50)" /></svg>
+              ) : (
+                <svg viewBox="0 0 100 100"><path d="M50,10 L90,90 L10,90 Z" /></svg>
+              );
+              
+              const ShapeRight = idx % 3 === 0 ? (
+                <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" strokeDasharray="8,4" /></svg>
+              ) : idx % 3 === 1 ? (
+                <svg viewBox="0 0 100 100"><path d="M10,50 L50,10 L90,50 L50,90 Z" /></svg>
+              ) : (
+                <svg viewBox="0 0 100 100"><path d="M20,20 C40,40 60,0 80,20 S100,60 80,80 S40,100 20,80 S0,40 20,20" /></svg>
+              );
+
+              return (
+                <div className="post-card-wrapper" key={post.id}>
+                  <div 
+                    className={`bob-visual bob-visual-1 ${isFilledL ? 'filled' : ''}`} 
+                    style={{ width: sizeL, height: sizeL }}
+                  >
+                    {ShapeLeft}
                   </div>
-                  <div className={`toggle-icon${openPost === post.id ? " open" : ""}`}>+</div>
+                  <div 
+                    className={`bob-visual bob-visual-2 ${isFilledR ? 'filled' : ''} ${idx % 2 === 1 ? 'rust' : ''}`} 
+                    style={{ 
+                      width: sizeR, 
+                      height: sizeR,
+                    }}
+                  >
+                    {ShapeRight}
+                  </div>
+                  
+                  <div className="post-card">
+                    <div className="post-header" onClick={() => toggle(post.id)}>
+                      <div className="post-meta">
+                        <div className="post-num">{post.num}</div>
+                        <div className="post-title">{post.title}</div>
+                        <div className="post-date">{post.date}</div>
+                      </div>
+                      <div className={`toggle-icon${openPost === post.id ? " open" : ""}`}>+</div>
+                    </div>
+                    <div className={`post-body${openPost === post.id ? " open" : ""}`}>
+                      {post.content}
+                    </div>
+                  </div>
                 </div>
-                <div className={`post-body${openPost === post.id ? " open" : ""}`}>
-                  {post.content}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </>
         )}
 
         {view === "about" && (
           <>
-            <div className="section-title">About Me</div>
+            <div className="section-title">A Bit About Me</div>
             <div className="about-card">
-              <h2>Hey, I'm Naman 👋</h2>
+              <h2>Hey, I'm <span className="handwritten">Naman</span> 👋</h2>
               <p className="tagline">Leadership Student · Abbey Park High School · Grade 12</p>
 
               <p>
-                Welcome to Luminary, my personal leadership blog for my Business Leadership
-                course. This space is where I work through ideas, reflect on experiences, and
-                figure out what leadership actually looks like in real life, not just in textbooks.
+                Welcome to my digital garden. This space, which I call <em>Luminary</em>, is where I 
+                document my journey through the Business Leadership course. It's a collection of 
+                raw reflections, honest failures, and the slow but steady work of thinking bigger.
               </p>
               <p>
-                Outside of school, I spend a lot of time playing volleyball, playing music, and
-                working on creative projects. Leadership for me is not some far off concept. I
-                think it shows up every day in how you treat people, how you handle setbacks, and
-                whether you are willing to show up even when it is uncomfortable.
+                Beyond these assignments, you'll usually find me on the volleyball court, 
+                experimenting with music, or diving into new creative projects. For me, 
+                leadership isn't a title—it's the way we choose to show up for others every single day.
               </p>
               <p>
-                I am taking this course because I want to understand what it actually means to lead,
-                not just manage. My goal by the end of the semester is to walk away with a clearer
-                sense of who I am as a leader and what I want to do with that.
-              </p>
-              <p>
-                Thanks for being here. I hope something you read in this blog is useful or
-                at least honest enough to be interesting.
+                I hope that by sharing my process here, I can look back and see how much 
+                my perspective has shifted. Thanks for stopping by.
               </p>
 
               <div className="video-container">
